@@ -18,7 +18,7 @@ const Admin = () => {
   }
 
   const { products, addProducts, getProducts } = useCrud();
-  const [isEditing, setIsEditing] = useState<boolean>(true);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
   const [formValues, setFormValues] = useState<FormValues>({
     id: 0,
     title: '',
@@ -34,7 +34,6 @@ const Admin = () => {
       ...formValues,
       [name]: type === "number" ? parseFloat(value) : value
     });
-    console.log(formValues);
   }
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

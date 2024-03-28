@@ -13,7 +13,7 @@ const useCrud = () => {
   
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   const getProducts = () => {
     fetchData();

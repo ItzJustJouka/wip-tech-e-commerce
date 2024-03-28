@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import useCrud from '../../hooks/useCrud';
 import Product from '../../types/Product';
 import Card from '../../components/Card/Card';
@@ -10,9 +10,6 @@ const Store = () => {
     const { products } = useCrud();
     const [cartItems, setCartItems] = useState<CartItems[]>([]);
 
-    useEffect(() => {
-        console.log("cartItems", cartItems);
-    }, [cartItems])
     return (
         <>
             <Header cartItems={cartItems} />
