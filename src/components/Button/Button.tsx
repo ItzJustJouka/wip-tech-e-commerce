@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { ComponentProps } from "react";
+import './Button.css'
 
 type ButtonProps = ComponentProps<'button'>
 

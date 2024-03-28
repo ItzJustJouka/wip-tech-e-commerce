@@ -1,4 +1,6 @@
 import React, { FormEventHandler } from 'react'
+import './Form.css'
+
 interface FormProps {
     title: string
     children: React.ReactNode
@@ -16,9 +18,10 @@ const Form: React.FC<FormProps> = ({ title, children, onSubmit }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        
+        <form className="form-container"onSubmit={handleSubmit}>
             <h3>{title}</h3>
-            <fieldset>{children}</fieldset>
+            <fieldset className="field-container">{children}</fieldset>
         </form>
     );
 };
