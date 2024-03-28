@@ -1,5 +1,29 @@
 .login-container {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    width: 100%;
+    border-radius: 20px;
+    align-items: center;
+    position:relative;
+    background-color: rgb(255, 255, 255);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    background-attachment: fixed;
+    background-position: top;
+    background-repeat: no-repeat;
 }
+
+img {
+    max-width: 100%;
+    object-fit: contain;
+    filter: blur(2px);
+    position:absolute;
+}
+
+.login-style {
+    width: 50%;
+    height: 70%;
+    position:relative;
+}
+

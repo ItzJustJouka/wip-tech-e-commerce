@@ -13,6 +13,7 @@ const Login = () => {
     const fetchUsers = async () => {
       const response = await fetch('http://localhost:3000/users');
       const data = await response.json();
+console.log(isLoggedIn);
       setUsers(data);
     }
     fetchUsers();
@@ -28,12 +29,15 @@ const Login = () => {
   
   return (
     <div className="login-container">
+    <img src="https://i.pinimg.com/736x/96/01/bd/9601bde7280172de6128044bbc9a32b2.jpg" alt="image" />
+      <div className="login-style">
       <Form title="Login" onSubmit={handleSubmit} >
         <Input name="email" type="email" placeholder="Email" />
         <Input name="password" type="password" placeholder="Password" />
         <Button type="submit">Login</Button>
       </Form>
       <Error message={"Invalid email or password. Try again"} loggedIn={isLoggedIn} />
+    </div>
     </div>
   )
 }
