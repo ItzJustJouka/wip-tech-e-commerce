@@ -1,5 +1,7 @@
 import React from 'react'
 import CartItems from '../../types/CartItems'
+import CartProduct from '../CartProduct/CartProduct'
+import "./CartProducts.css"
 
 interface CartProductsProps {
     cartItems: CartItems[],
@@ -12,20 +14,17 @@ const CartProducts: React.FC<CartProductsProps> = ({ cartItems, setCartItems }) 
     }
 
     return (
-        <div className="cart-products">
-            {cartItems.map((item, index) => (
-                <div key={index} className="cart-product">
-                    <div className="cart-product-info-container">
-                        <img src={item.image} alt={item.title} className="cart-product-img" />
-                        <div className="cart-product-info">
-                            <p className="cart-product-title">{item.title}</p>
-                            <p className="cart-product-category">{item.category}</p>
-                            <p className="cart-product-price">{`${item.price && item.price.toFixed(2)}€`}</p>
-                        </div>
+        <div className="cart-products__container">
+            <div className="cart-products">
+                {cartItems.map((item, index) => (
+                    <div key={index} className="cart-product">
+                        <CartProduct item={item} index={index} removeFromCart={removeFromCart} />
                     </div>
-                    <button onClick={() => removeFromCart(index)}>Remove</button>
-                </div>
-            ))}
+                ))}
+            </div>
+            <div className="cart-total-price">
+                <p className={`cart-total-price__content  + ${cartItems.length === 0 ? "hidden" : ""}`} >Total Price: {cartItems.reduce((acc, item) => item.price + acc, 0).toFixed(2)}€</p>
+            </div>
         </div>
     )
 }

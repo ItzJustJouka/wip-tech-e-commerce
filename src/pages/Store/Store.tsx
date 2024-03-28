@@ -5,6 +5,7 @@ import Card from '../../components/Card/Card';
 import Header from '../../components/Header/Header';
 import CartItems from '../../types/CartItems';
 import CartProducts from '../../components/CartProducts/CartProducts';
+import "./Store.css"
 
 const Store = () => {
     const { products } = useCrud();
@@ -13,7 +14,7 @@ const Store = () => {
     return (
         <>
             <Header cartItems={cartItems} />
-            <div className="d-flex flex-wrap w-100 justify-content-between">
+            <div className="cards__container">
                 {products ? (
                     products.map((product: Product) => (
                         <Card key={product.id} item={product} setCartItems={setCartItems} />
@@ -22,7 +23,7 @@ const Store = () => {
                     <p>Loading...</p>
                 )}
             </div>
-            <CartProducts cartItems={cartItems} setCartItems={setCartItems}/>
+            <CartProducts cartItems={cartItems} setCartItems={setCartItems} />
         </>
     )
 }
