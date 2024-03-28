@@ -1,0 +1,14 @@
+.search-bar__container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.search-bar {
+    height: 38px;
+    border: 1px solid gray;
+    border-radius: 5px 0 0 5px;
+    border-right: none;
+}
+.btn.search-button {
+    border-radius: 0 5px 5px 0;
+}
