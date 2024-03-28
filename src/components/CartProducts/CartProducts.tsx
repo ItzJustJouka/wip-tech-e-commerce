@@ -1,6 +1,5 @@
 import React from 'react'
 import CartItems from '../../types/CartItems'
-import Product from '../../types/Product'
 
 interface CartProductsProps {
     cartItems: CartItems[],
@@ -9,7 +8,7 @@ interface CartProductsProps {
 const CartProducts: React.FC<CartProductsProps> = ({ cartItems, setCartItems }) => {
 
     const removeFromCart = (index: number) => {
-        setCartItems(((prev: CartItems[]) => prev.filter(item => item.id !== index)))
+        setCartItems(((prev: CartItems[]) => prev.filter((_, i) => i !== index)))
     }
 
     return (
@@ -24,7 +23,7 @@ const CartProducts: React.FC<CartProductsProps> = ({ cartItems, setCartItems }) 
                             <p className="cart-product-price">{`${item.price && item.price.toFixed(2)}€`}</p>
                         </div>
                     </div>
-                    <button onClick={() => removeFromCart(item.id)}>Remove</button>
+                    <button onClick={() => removeFromCart(index)}>Remove</button>
                 </div>
             ))}
         </div>
