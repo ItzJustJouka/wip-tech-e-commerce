@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import useCrud from '../../hooks/useCrud';
 import Product from '../../types/Product';
 import "./Admin.css"
+import User from '../../types/User';
 
-const Admin = () => {
+interface AdminProps {
+  setIsLoggedIn: Function
+  user: User
+}
+const Admin: React.FC<AdminProps> = ({setIsLoggedIn, user}) => {
   interface FormValues {
     id?: number
     title: string
@@ -87,6 +92,7 @@ const Admin = () => {
           <button className="btn btn-secondary mt-5" onClick={() => setIsEditing(!isEditing)}>Cancel</button>
         </div>
       )}
+      <button onClick={() => setIsLoggedIn(null)}>Logout</button>
     </>
   );
 }
