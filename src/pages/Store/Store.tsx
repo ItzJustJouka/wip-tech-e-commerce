@@ -13,7 +13,7 @@ const Store = () => {
 
     return (
         <>
-            <Header cartItems={cartItems} />
+            <Header cartItems={cartItems} setCartItems={setCartItems} />
             <div className="cards__container">
                 {products ? (
                     products.map((product: Product) => (
@@ -23,7 +23,6 @@ const Store = () => {
                     <p>Loading...</p>
                 )}
             </div>
-            <CartProducts cartItems={cartItems} setCartItems={setCartItems} />
         </>
     )
 }
