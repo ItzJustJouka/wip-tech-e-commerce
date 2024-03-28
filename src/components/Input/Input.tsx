@@ -1,4 +1,7 @@
 import React, { ComponentProps, useId } from 'react'
+import './Input.css'
+
+
 type InputProps = ComponentProps<"input">
 
 const Input: React.FC<InputProps> = (props: InputProps) => {

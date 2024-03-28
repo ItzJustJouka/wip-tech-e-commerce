@@ -1,0 +1,16 @@
+.btn-style {
+    width: 80px;
+    height: 40px;
+    border: 1px solid rgba(214, 196, 196, 0.541);
+    border-radius: 20px;
+    background-color: rgba(202, 214, 236, 0.5);
+}
+
+.btn-style:hover {
+    transition: 0.2s;
+    box-shadow:  1px 1px 3px inset gray;
+}
+
+.btn-style:active {
+    transform: translateY(3px);
+}
