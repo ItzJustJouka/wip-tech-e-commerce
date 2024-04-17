@@ -3,7 +3,6 @@
     align-items: center;
     justify-content: space-between;
     border: 1px solid gray;
-    width: 50%;
     padding: 20px;
 }
 
@@ -23,7 +22,22 @@
 
 .cart-product-image {
     height: 200px;
-    width: 200px;
+    width: 150px;
     object-fit: contain;
     padding-right: 20px;
+}
+.cart-product-title__container {
+    width: 90%;
+}
+.add-to-cart__button {
+    background-color: rgb(255, 217, 0);
+    color: black;
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: 1px solid rgb(255, 217, 0);
+    transition: all 150ms;
+}
+.add-to-cart__button:hover {
+    background-color: transparent;
+    padding: 5px 17px;
 }

@@ -21,7 +21,7 @@ const CartProduct: React.FC<CartProductProps> = ({ item, index, removeFromCart }
                     <div className="cart-product-category__container">
                         <p className="cart-product-category">{item.category}</p>
                     </div>
-                    <button onClick={() => removeFromCart(index)}>Remove</button>
+                    <button className="add-to-cart__button" onClick={() => removeFromCart(index)}>Remove</button>
                 </div>
             </div>
             <div className="cart-product-price__container">

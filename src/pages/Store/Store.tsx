@@ -24,7 +24,6 @@ const Store = () => {
                     <p>Loading...</p>
                 )}
             </div>
-            <CartProducts cartItems={cartItems} setCartItems={setCartItems} />
         </>
     )
 }

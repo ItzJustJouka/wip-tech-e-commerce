@@ -6,13 +6,14 @@ import "./Header.css"
 
 interface HeaderProps {
   cartItems: CartItems[];
+  setCartItems: Function;
 }
-const Header: React.FC<HeaderProps> = ({ cartItems }) => {
+const Header: React.FC<HeaderProps> = ({ cartItems, setCartItems }) => {
 
   return (
     <div className="d-flex justify-content-between header">
       <Searchbar />
-      <Cart cartItems={cartItems} />
+      <Cart cartItems={cartItems} setCartItems={setCartItems}/>
     </div>
   );
 }
