@@ -1,29 +1,37 @@
+.login-page__wrapper {
+    min-height: calc(100vh - 110px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .login-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 100%;
     border-radius: 20px;
     align-items: center;
-    position:relative;
     background-color: rgb(255, 255, 255);
-    margin: 20px;
-    padding: 20px;
     border-radius: 20px;
-    background-attachment: fixed;
-    background-position: top;
+    position: relative;
+}
+
+.login-container::before {
+    content: "";
+    background: url("./../../../public/welcome.jpg");
     background-repeat: no-repeat;
-}
-
-img {
-    max-width: 100%;
-    object-fit: contain;
+    background-size: contain;
+    background-position-x: center;
+    background-position-y: -20px;
+    width: 100%;
+    z-index: 0;
+    position: absolute;
+    height: 100%;
     filter: blur(2px);
-    position:absolute;
 }
 
-.login-style {
-    width: 50%;
-    height: 70%;
-    position:relative;
-}
+
+
+
 
