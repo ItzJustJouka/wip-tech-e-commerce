@@ -3,5 +3,7 @@
     color: black;
     padding-bottom: 0;
     margin-bottom: 5px;
-
+}
+.form-input {
+    width: 300px;
 }
