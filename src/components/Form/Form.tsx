@@ -18,11 +18,12 @@ const Form: React.FC<FormProps> = ({ title, children, onSubmit }) => {
     };
 
     return (
-        
-        <form className="form-container"onSubmit={handleSubmit}>
-            <h3>{title}</h3>
-            <fieldset className="field-container">{children}</fieldset>
-        </form>
+        <div className="form-container">
+            <form className="input-form" onSubmit={handleSubmit}>
+                <h3>{title}</h3>
+                <fieldset className="field-container">{children}</fieldset>
+            </form>
+        </div>
     );
 };
 

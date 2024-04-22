@@ -1,20 +1,22 @@
-import { useState } from 'react'
 import useCrud from '../../hooks/useCrud';
 import Product from '../../types/Product';
 import Card from '../../components/Card/Card';
-import Header from '../../components/Header/Header';
 import CartItems from '../../types/CartItems';
-import CartProducts from '../../components/CartProducts/CartProducts';
 import "./Store.css";
 import Navbar from '../../components/Navbar/Navbar';
-const Store = () => {
+import Offcanvas from '../../components/Offcanvas/Offcanvas';
+
+interface StoreProps {
+    cartItems: CartItems[], 
+    setCartItems: Function,
+}
+const Store = ({ cartItems, setCartItems }: StoreProps) => {
     const { products } = useCrud();
-    const [cartItems, setCartItems] = useState<CartItems[]>([]);
 
     return (
-        <>
-            <Navbar></Navbar>
-            <Header cartItems={cartItems} />
+        <div className="main__wrapper">
+            <Navbar cartItems={cartItems} setCartItems={setCartItems} />
+            <Offcanvas cartItems={cartItems} setCartItems={setCartItems} />
             <div className="cards__container">
                 {products ? (
                     products.map((product: Product) => (
@@ -24,7 +26,7 @@ const Store = () => {
                     <p>Loading...</p>
                 )}
             </div>
-        </>
+        </div>
     )
 }
 
