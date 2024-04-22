@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useCrud from '../../hooks/useCrud';
 import Product from '../../types/Product';
 import "./Admin.css"
 import User from '../../types/User';
+import AdminProduct from '../../components/AdminProduct/AdminProduct';
+import AdminModal from '../../components/AdminModal/AdminModal';
 
 interface AdminProps {
   setIsLoggedIn: Function
   user: User
 }
-const Admin: React.FC<AdminProps> = ({setIsLoggedIn, user}) => {
+const Admin: React.FC<AdminProps> = ({ setIsLoggedIn, user }) => {
   interface FormValues {
     id?: number
     title: string
@@ -22,8 +24,8 @@ const Admin: React.FC<AdminProps> = ({setIsLoggedIn, user}) => {
     }
   }
 
-  const { products, addProducts, getProducts } = useCrud();
-  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const { products, addProducts, getProducts, editProducts, deleteProducts } = useCrud();
+  const [isAdding, setIsAdding] = useState<boolean>(false);
   const [formValues, setFormValues] = useState<FormValues>({
     id: 0,
     title: '',
@@ -40,31 +42,29 @@ const Admin: React.FC<AdminProps> = ({setIsLoggedIn, user}) => {
       [name]: type === "number" ? parseFloat(value) : value
     });
   }
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    addProducts({ ...formValues, id: products.length + 1});
-    setIsEditing(true);
+    await addProducts({ ...formValues, id: products.length + 1 });
     getProducts();
+    setIsAdding(false);
   }
 
   return (
     <>
-      {!isEditing ? (
-        <div className="admin-products-container">
-          {products.map((product: Product) => (
-            <div className="admin-product-container" key={product.id}>
-              <img src={product.image} alt={product.title} />
-              <div className="admin-product-info">
-                <h2>{product.title}</h2>
-                <p>{product.price.toFixed(2)}€</p>
+      {!isAdding ? (
+        <div className="admin-page__wrapper">
+          <div className="admin-products-container">
+            <AdminModal formValues={formValues} handleChange={handleChange} getProducts={getProducts} setFormValues={setFormValues} editProducts={editProducts} deleteProducts={deleteProducts} />
+            {products.map((product: Product, index: number) => (
+              <AdminProduct product={product} key={index} formValues={formValues} setFormValues={setFormValues} />
+            ))}
+            <div className="add-product-div admin-product-container" onClick={() => setIsAdding(!isAdding)}>
+              <div className="product-div__content">
+                <p>Add</p>
+                <p><span className="plus">+</span></p>
+                <p>Product</p>
               </div>
-            </div>
-          ))}
-          <div className="add-product-div admin-product-container" onClick={() => setIsEditing(!isEditing)}>
-            <div className="product-div__content">
-              <p>Add</p>
-              <p><span className="plus">+</span></p>
-              <p>Product</p>
             </div>
           </div>
         </div>
@@ -89,10 +89,12 @@ const Admin: React.FC<AdminProps> = ({setIsLoggedIn, user}) => {
 
             <button type="submit" className="btn btn-primary">Submit</button>
           </form>
-          <button className="btn btn-secondary mt-5" onClick={() => setIsEditing(!isEditing)}>Cancel</button>
+          <button className="btn btn-secondary mt-5" onClick={() => setIsAdding(!isAdding)}>Cancel</button>
         </div>
       )}
-      <button onClick={() => setIsLoggedIn(null)}>Logout</button>
+      <div className="logout-button__container d-flex justify-content-center">
+        <button className="logout-button btn btn-danger" onClick={() => setIsLoggedIn(null)}>Logout</button>
+      </div>
     </>
   );
 }
