@@ -7,7 +7,7 @@ type ButtonProps = ComponentProps<'button'>
 
 const Button = (props: ButtonProps) => {
     const { children, ...attrs } = props;
-    return <button {...attrs} className="btn btn-outline-primary">{children}</button>
+    return <button {...attrs} className="btn-style">{children}</button>
 }
 
 export default Button;
