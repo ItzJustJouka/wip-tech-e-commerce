@@ -13,7 +13,7 @@ interface AdminProps {
 }
 const Admin: React.FC<AdminProps> = ({ setIsLoggedIn, user }) => {
   interface FormValues {
-    id?: number
+    id?: string
     title: string
     price: number
     description: string
@@ -28,7 +28,7 @@ const Admin: React.FC<AdminProps> = ({ setIsLoggedIn, user }) => {
   const { products, addProducts, getProducts, editProducts, deleteProducts } = useCrud();
   const [isAdding, setIsAdding] = useState<boolean>(false);
   const [formValues, setFormValues] = useState<FormValues>({
-    id: 0,
+    id: "",
     title: '',
     price: 0,
     description: '',
@@ -46,7 +46,7 @@ const Admin: React.FC<AdminProps> = ({ setIsLoggedIn, user }) => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await addProducts({ ...formValues, id: products.length + 1 });
+    await addProducts({ ...formValues, id: String(products.length + 1) });
     getProducts();
     setIsAdding(false);
   }
