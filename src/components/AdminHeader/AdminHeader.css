@@ -1,0 +1,13 @@
+#admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    height: 80px;
+}
+.admin-username {
+    margin: 0;
+}
+.username {
+    font-weight: bold;
+}

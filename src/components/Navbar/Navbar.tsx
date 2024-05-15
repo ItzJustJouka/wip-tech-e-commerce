@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Cart from '../Cart/Cart';
 import CartItems from '../../types/CartItems';
 import Searchbar from '../Searchbar/Searchbar';
@@ -8,9 +8,6 @@ interface NavbarProps {
   setCartItems: Function
 }
 const Navbar: React.FC<NavbarProps> = ({ cartItems }) => {
-  useEffect(() => {
-    console.log("Navbar render");
-  },[]);
   return (
     <nav className="navbar navbar-expand-lg fixed-top bg-body-tertiary flex-nowrap">
       <div className="container-fluid">

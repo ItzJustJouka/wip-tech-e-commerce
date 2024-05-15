@@ -5,6 +5,7 @@ import "./Admin.css"
 import User from '../../types/User';
 import AdminProduct from '../../components/AdminProduct/AdminProduct';
 import AdminModal from '../../components/AdminModal/AdminModal';
+import AdminHeader from '../../components/AdminHeader/AdminHeader';
 
 interface AdminProps {
   setIsLoggedIn: Function
@@ -54,6 +55,7 @@ const Admin: React.FC<AdminProps> = ({ setIsLoggedIn, user }) => {
     <>
       {!isAdding ? (
         <div className="admin-page__wrapper">
+          <AdminHeader user={user} />
           <div className="admin-products-container">
             <AdminModal formValues={formValues} handleChange={handleChange} getProducts={getProducts} setFormValues={setFormValues} editProducts={editProducts} deleteProducts={deleteProducts} />
             {products.map((product: Product, index: number) => (

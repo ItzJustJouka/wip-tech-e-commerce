@@ -5,19 +5,18 @@ const useCrud = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
 
-  const fetchData = useCallback(async () => {
-    const response = await fetch("http://localhost:3000/products");
+  const fetchData = useCallback(async (url: string) => {
+    const response = await fetch(url);
     const data = await response.json();
     setProducts([...data.map((item: Product) => ({ ...item, quantity: 0 }))]);
   }, []);
-  
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
 
-  const getProducts = () => {
-    fetchData();
+  const getProducts = (url: string  = "http://localhost:3000/products") => {
+    fetchData(url);
   }
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   const addProducts = async (product: Product) => {
     try {
